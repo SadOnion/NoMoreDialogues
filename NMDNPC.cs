@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.GameContent.Achievements;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.UI.Gamepad;
 
 namespace NoMoreDialogues
 {
-    class NMDShopNPC: GlobalNPC
+    class NMDNPC : GlobalNPC
     {
 		private static Dictionary<int,ShopID> npcs = new Dictionary<int, ShopID>()
 		{
@@ -34,30 +36,35 @@ namespace NoMoreDialogues
         {
             Player player = Main.player[Main.myPlayer];
 			int talkNPC = player.talkNPC;
+
 			if(talkNPC != -1)
 			{
-				if (npcs.ContainsKey(npc.type))
+				if(Main.npc[talkNPC].type == NPCID.Guide && Main.InGuideCraftMenu==false)
 				{
-					int thisNPCShop = (int)npcs[npc.type];
-					if(Main.npc[talkNPC].type == npc.type && Main.npcShop != thisNPCShop)
+					NMDHelper.OpenCraftingMenu();
+				}
+                if(Main.npc[talkNPC].type == NPCID.Nurse)
+				{
+					NMDHelper.Heal();
+					player.talkNPC=-1;
+				}
+				if (npcs.ContainsKey(Main.npc[talkNPC].type))
+				{
+					int shopId=(int)npcs[Main.npc[talkNPC].type];
+					if(Main.npcShop != shopId)
 					{
-					
-						OpenShop(thisNPCShop);
+						NMDHelper.OpenShop(shopId);
 					}
 				}
-
+				if(Main.npc[talkNPC].type == NPCID.TaxCollector)
+				{
+					NMDHelper.CollectTax();
+					player.talkNPC=-1;
+				}
 			}
-            base.AI(npc);
+            base.PostAI(npc);
         }
 
-		public void OpenShop(int shopID)
-		{
-			Main.playerInventory = true;
-			Main.npcChatText = "";
-			Main.npcShop = shopID;
-			Main.PlaySound(12, -1, -1, 1, 1f, 0f);
-		}
-		
     }
 	public enum ShopID
 	{
