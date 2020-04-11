@@ -5,6 +5,7 @@ Example:
  Merchant has only shop so if you click on him you will see his shop, you don't have to click on shop button never again.
  
 List of NPC that are without dialogue box:
+Vanilla:
 -Merchant
 -Guide
 -Nurse
@@ -23,3 +24,10 @@ List of NPC that are without dialogue box:
 -Witch Doctor
 -Steampunker
 -PartyGirl
+
+Thorium:
+-Druid
+-Blacksmith
+
+Calamity:
+-Archmage

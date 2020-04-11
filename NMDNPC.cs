@@ -32,34 +32,48 @@ namespace NoMoreDialogues
 			[NPCID.PartyGirl] = ShopID.PartyGirl
 
 		};
+		private static string[] modNpcs = {"Druid","Blacksmith","DILF"};
         public override void PostAI(NPC npc)
         {
-            Player player = Main.player[Main.myPlayer];
-			int talkNPC = player.talkNPC;
-
-			if(talkNPC != -1)
+			if (npc.townNPC)
 			{
-				if(Main.npc[talkNPC].type == NPCID.Guide && Main.InGuideCraftMenu==false)
+				Player player = Main.player[Main.myPlayer];
+				int talkNPC = player.talkNPC;
+
+				if(talkNPC != -1)
 				{
-					NMDHelper.OpenCraftingMenu();
-				}
-                if(Main.npc[talkNPC].type == NPCID.Nurse)
-				{
-					NMDHelper.Heal();
-					player.talkNPC=-1;
-				}
-				if (npcs.ContainsKey(Main.npc[talkNPC].type))
-				{
-					int shopId=(int)npcs[Main.npc[talkNPC].type];
-					if(Main.npcShop != shopId)
+					if(Main.npc[talkNPC].type == NPCID.Guide && Main.InGuideCraftMenu==false)
 					{
-						NMDHelper.OpenShop(shopId);
+						NMDHelper.OpenCraftingMenu();
 					}
-				}
-				if(Main.npc[talkNPC].type == NPCID.TaxCollector)
-				{
-					NMDHelper.CollectTax();
-					player.talkNPC=-1;
+				    if(Main.npc[talkNPC].type == NPCID.Nurse)
+					{
+						NMDHelper.Heal();
+						player.talkNPC=-1;
+					}
+					if (npcs.ContainsKey(Main.npc[talkNPC].type))
+					{
+						int shopId=(int)npcs[Main.npc[talkNPC].type];
+						if(Main.npcShop != shopId)
+						{
+							NMDHelper.OpenShop(shopId);
+						}
+					}
+					if(Main.npc[talkNPC].type == NPCID.TaxCollector)
+					{
+						NMDHelper.CollectTax();
+						player.talkNPC=-1;
+					}
+					if(npc.modNPC != null)
+					{
+						if(modNpcs.Contains(npc.modNPC.Name) && Main.npcShop != 22)
+						{
+							if(Main.npc[talkNPC].type == npc.type)
+							{
+								NPCLoader.OnChatButtonClicked(true);
+							}
+						}
+					}
 				}
 			}
             base.PostAI(npc);
