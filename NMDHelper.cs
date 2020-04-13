@@ -79,6 +79,7 @@ namespace NoMoreDialogues
 			Main.playerInventory = true;
 			Main.npcChatText = "";
 			Main.npcShop = shopID;
+			Main.instance.shop[Main.npcShop].SetupShop(shopID);
 			Main.PlaySound(12, -1, -1, 1, 1f, 0f);
 		}
 		public static void CollectTax()
