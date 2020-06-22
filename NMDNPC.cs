@@ -13,7 +13,7 @@ namespace NoMoreDialogues
 {
     class NMDNPC : GlobalNPC
     {
-		private static Dictionary<int,ShopID> npcs = new Dictionary<int, ShopID>()
+		private static readonly Dictionary<int, ShopID> npcs = new Dictionary<int, ShopID>()
 		{
 			[NPCID.Merchant] = ShopID.Merchant,
 			[NPCID.Demolitionist] = ShopID.Demolitionist,
@@ -29,7 +29,10 @@ namespace NoMoreDialogues
 			[NPCID.WitchDoctor] = ShopID.WitchDoctor,
 			[NPCID.Steampunker] = ShopID.Steampunker,
 			[NPCID.Pirate] = ShopID.Pirate,
-			[NPCID.PartyGirl] = ShopID.PartyGirl
+			[NPCID.PartyGirl] = ShopID.PartyGirl,
+			[NPCID.Dryad] = ShopID.Dryad,
+			[NPCID.DyeTrader] = ShopID.DyeTrader,
+			[NPCID.SantaClaus] = ShopID.Santa,
 
 		};
 		private static string[] modNpcs = {"Druid","Blacksmith","DILF"};
@@ -42,6 +45,7 @@ namespace NoMoreDialogues
 
 				if(talkNPC != -1)
 				{
+
 					if(Main.npc[talkNPC].type == NPCID.Guide && Main.InGuideCraftMenu==false)
 					{
 						NMDHelper.OpenCraftingMenu();
@@ -49,7 +53,7 @@ namespace NoMoreDialogues
 				    if(Main.npc[talkNPC].type == NPCID.Nurse)
 					{
 						NMDHelper.Heal();
-						player.talkNPC=-1;
+						//player.talkNPC=-1;
 					}
 					if (npcs.ContainsKey(Main.npc[talkNPC].type))
 					{
@@ -62,18 +66,26 @@ namespace NoMoreDialogues
 					if(Main.npc[talkNPC].type == NPCID.TaxCollector)
 					{
 						NMDHelper.CollectTax();
-						player.talkNPC=-1;
+						//player.talkNPC=-1;
 					}
+
 					if(npc.modNPC != null)
 					{
-						if(modNpcs.Contains(npc.modNPC.Name) && Main.npcShop != 22)
+						if(Main.npcShop != 22)
 						{
 							if(Main.npc[talkNPC].type == npc.type)
 							{
+								
 								NPCLoader.OnChatButtonClicked(true);
+								player.talkNPC = talkNPC;
+								string chat = "";
+								NPCLoader.GetChat(npc,ref chat);
+								Main.npcChatText = chat;
 							}
+							
 						}
 					}
+					
 				}
 			}
             base.PostAI(npc);
@@ -84,15 +96,13 @@ namespace NoMoreDialogues
 	{
 		Merchant=1,
 		ArmsDealer=2,
-		Mechanic=8,
-		Santa=9,
-		Stylist=18,
-		Traveling=19,
-		SkeletonMerchant=20,
 		Dryad=3,
 		Demolitionist=4,
 		Clothier=5,
+		Goblin=6,
 		Wizard=7,
+		Mechanic=8,
+		Santa=9,
 		Truffle=10,
 		Steampunker=11,
 		DyeTrader=12,
@@ -101,6 +111,9 @@ namespace NoMoreDialogues
 		Painter=15,
 		WitchDoctor=16,
 		Pirate=17,
+		Stylist=18,
+		Traveling=19,
+		SkeletonMerchant=20,
 		Tavernkeep=21
 	}
 }

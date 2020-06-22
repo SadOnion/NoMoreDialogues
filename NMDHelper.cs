@@ -16,7 +16,7 @@ namespace NoMoreDialogues
         public static void OpenCraftingMenu()
         {
             Main.playerInventory = true;
-			Main.npcChatText = "";
+			//Main.npcChatText = "";
 			Main.PlaySound(12, -1, -1, 1, 1f, 0f);
 			Main.InGuideCraftMenu = true;
 			UILinkPointNavigator.GoToDefaultPage(0);
@@ -77,7 +77,7 @@ namespace NoMoreDialogues
 		public static void OpenShop(int shopID)
 		{
 			Main.playerInventory = true;
-			Main.npcChatText = "";
+			//Main.npcChatText = "";
 			Main.npcShop = shopID;
 			Main.instance.shop[Main.npcShop].SetupShop(shopID);
 			Main.PlaySound(12, -1, -1, 1, 1f, 0f);
@@ -136,10 +136,7 @@ namespace NoMoreDialogues
 				}
 				Main.player[Main.myPlayer].taxMoney = 0;
 			}
-			else
-			{
-				Main.npcChatText = "";
-			}
+			
         }
     }
 }
