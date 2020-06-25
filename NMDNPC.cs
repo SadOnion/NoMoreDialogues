@@ -33,9 +33,9 @@ namespace NoMoreDialogues
 			[NPCID.Dryad] = ShopID.Dryad,
 			[NPCID.DyeTrader] = ShopID.DyeTrader,
 			[NPCID.SantaClaus] = ShopID.Santa,
+			[NPCID.DD2Bartender] = ShopID.Tavernkeep
 
 		};
-		private static string[] modNpcs = {"Druid","Blacksmith","DILF"};
         public override void PostAI(NPC npc)
         {
 			if (npc.townNPC)
