@@ -52,8 +52,10 @@ namespace NoMoreDialogues
 					}
 				    if(Main.npc[talkNPC].type == NPCID.Nurse)
 					{
-						NMDHelper.Heal();
-						//player.talkNPC=-1;
+                        if (NoMoreDialogues.nurseQuickHeal)
+                        {
+							NMDHelper.Heal();
+                        }
 					}
 					if (npcs.ContainsKey(Main.npc[talkNPC].type))
 					{
@@ -66,7 +68,6 @@ namespace NoMoreDialogues
 					if(Main.npc[talkNPC].type == NPCID.TaxCollector)
 					{
 						NMDHelper.CollectTax();
-						//player.talkNPC=-1;
 					}
 
 					if(npc.modNPC != null)

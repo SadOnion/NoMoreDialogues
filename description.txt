@@ -1,33 +1,13 @@
-Tired of npc dialouge boxes? No? ... well here it comes a mod that nobody asked for No More Dialogues if npc has only one purpouse it will do it 
-it without anoying dialogue box hurray finaly!
+Quick way to acces your npc shop
 
-Example:
- Merchant has only shop so if you click on him you will see his shop, you don't have to click on shop button never again.
- 
-List of NPC that are without dialogue box:
-Vanilla:
--Merchant
--Guide
--Nurse
--Tax collector
--Pirate
--Demolitionist
--ArmsDealer
--Cyborg
--Clothier
--Mechanic
--Painter
--Skeleton Merchant
--Traveling Merchant
--Wizard
--Truffle
--Witch Doctor
--Steampunker
--PartyGirl
+Vanilla Terraria:
 
-Thorium:
--Druid
--Blacksmith
+Click on npc -> Click on shop button -> Acces the shop 
 
-Calamity:
--Archmage
+Quick NPC Shops:
+
+Click on npc -> Acces the shop
+
+This mod makes your terraria expirience a little bit better
+
+npcs without shop works the same way: Click on npc -> Do something
