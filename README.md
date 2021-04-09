@@ -11,3 +11,5 @@ Click on npc -> Acces the shop
 This mod makes your terraria expirience a little bit better
 
 npcs without shop works the same way: Click on npc -> Do something
+
+Forum post: https://forums.terraria.org/index.php?threads/no-more-dialogues-mod.87345/
